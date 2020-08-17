@@ -13,7 +13,6 @@ export default class SubmitEndpoint extends Component {
   }
 
   submit = (event) => {
-    console.log("hi")
     event.preventDefault();
     let form = event.target;
     let body = {};
@@ -28,9 +27,9 @@ export default class SubmitEndpoint extends Component {
       }
     }
     if (!this.endpoint){
-      axios.post("http://localhost:9000/api/poll", body).then(() => this.props.getEndpoints());
+      axios.post("http://"+window.location.hostname+":9000/api/poll", body).then(() => this.props.getEndpoints());
     } else {
-      axios.put("http://localhost:9000/api/poll", body).then(() => this.props.getEndpoints());
+      axios.put("http://"+window.location.hostname+":9000/api/poll", body).then(() => this.props.getEndpoints());
     }
 
   }

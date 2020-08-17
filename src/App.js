@@ -18,7 +18,7 @@ export default class App extends React.Component {
   }
 
   getEndpoints = () => {
-    axios.get("http://localhost:9000/api/poll")
+    axios.get("http://"+window.location.hostname+":9000/api/poll")
       .then(response => this.setState({endpoints:response.data}));
   }
 

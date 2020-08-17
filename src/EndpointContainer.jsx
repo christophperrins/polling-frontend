@@ -21,7 +21,7 @@ export default class EndpointContainer extends Component {
   }
 
   getHistory = () => {
-    axios.put("http://localhost:9000/api/history", this.props.endpoint.endpoint, {
+    axios.put("http://"+window.location.hostname+":9000/api/history", this.props.endpoint.endpoint, {
       headers: {
         'Content-Type': "text/plain"
       }
@@ -29,7 +29,7 @@ export default class EndpointContainer extends Component {
   }
 
   deleteEndpoint = () => {
-    axios.post("http://localhost:9000/api/poll/delete", this.props.endpoint.endpoint, {
+    axios.post("http://"+window.location.hostname+":9000/api/poll/delete", this.props.endpoint.endpoint, {
       headers: {
         'Content-Type': "text/plain"
       }
