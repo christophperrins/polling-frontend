@@ -42,7 +42,7 @@ export default class EndpointContainer extends Component {
       timedate = timedate.split("T");
       let date = timedate[0];
       let time = timedate[1].split(".")[0].split(":");
-      time[0] = time[0] +1;
+      time[0] = Number(time[0] +1);
       time = time.join(":")
       
 
