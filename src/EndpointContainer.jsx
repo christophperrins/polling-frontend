@@ -81,7 +81,7 @@ export default class EndpointContainer extends Component {
         let time = timedate[1].split(".")[0].split(":");
         let timeX = Number(time[0] * 60 * 60) + Number(time[1] * 60) + Number(time[2]);
         let timeDifference = timeX - timeInSeconds;
-        response.x = timeDifference
+        response.x = timeDifference +3600;
         response.y = history.responseTime;
         return response;
       });
