@@ -45,11 +45,19 @@ export default class EndpointContainer extends Component {
 
       return (
         <React.Fragment>
-          <h6>Status: {this.state.history[0].status}</h6>
-          <h6>Response Time: {this.state.history[0].responseTime} ms</h6>
+          <h6>Status: {this.state.history[this.state.history.length-1].status}</h6>
+          <h6>Response Time: {this.state.history[this.state.history.length-1].responseTime} ms</h6>
           <h6>Last checked: {`${date} ${time}`}</h6>
         </React.Fragment>
       );
+    } else {
+      return (
+        <React.Fragment>
+        <h6>Status: loading...</h6>
+        <h6>Response Time: loading...</h6>
+        <h6>Last checked: loading...</h6>
+      </React.Fragment>
+      )
     }
   }
 
@@ -68,9 +76,6 @@ export default class EndpointContainer extends Component {
         let timedate = history.timedate;
         timedate = timedate.split("T");
         let time = timedate[1].split(".")[0].split(":");
-        let hours = time[0];
-        let minutes = time[1];
-        let seconds = time[2];
         let timeX = Number(time[0] * 60 * 60) + Number(time[1] * 60) + Number(time[2]);
         let timeDifference = timeX - timeInSeconds + 3600;
         response.x = timeDifference
