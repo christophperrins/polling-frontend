@@ -25,7 +25,7 @@ export default class EndpointContainer extends Component {
       headers: {
         'Content-Type': "text/plain"
       }
-    }).then(response => this.setState({ history: response.data, loaded: true }));
+    }).then(response => this.setState({ history: response.data, loaded: true, expand: false }));
   }
 
   deleteEndpoint = () => {
@@ -41,7 +41,10 @@ export default class EndpointContainer extends Component {
       let timedate = this.state.history[this.state.history.length - 1].timedate;
       timedate = timedate.split("T");
       let date = timedate[0];
-      let time = timedate[1].split(".")[0];
+      let time = timedate[1].split(".")[0].split(":");
+      time[0] = time[0] +1;
+      time = time.join(":")
+      
 
       return (
         <React.Fragment>
@@ -77,7 +80,7 @@ export default class EndpointContainer extends Component {
         timedate = timedate.split("T");
         let time = timedate[1].split(".")[0].split(":");
         let timeX = Number(time[0] * 60 * 60) + Number(time[1] * 60) + Number(time[2]);
-        let timeDifference = timeX - timeInSeconds + 3600;
+        let timeDifference = timeX - timeInSeconds;
         response.x = timeDifference
         response.y = history.responseTime;
         return response;
