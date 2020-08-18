@@ -30,6 +30,12 @@ export default class Graph extends React.Component {
               display: true,
               labelString: 'Response Time in ms'
             }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Seconds since request made'
+            }
           }]
         }
       },
